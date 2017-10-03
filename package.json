@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/bezouglovak/NYCDA-Final-Project#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.16.1"
   }
 }
