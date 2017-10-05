@@ -11,12 +11,31 @@
     <script type="text/javascript">
       $(document).ready(function() {
         $('#btn').click(function() {
-          $.ajax({url: "/api"});
+          var genre = $(".genre-dropdown option:selected").text();
+          $.ajax({
+            url: "/api",
+            data: {
+              genre: genre
+            }
+          }).done(function(data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+              var p = $("<p>").text(data[i].name);
+              $("body").append(p);
+            }
+          });
         });
       });
     </script>
   </head>
   <body>
+    <select class="genre-dropdown">
+      <option value="action">Action</option>
+      <option value="adventure">Adventure</option>
+      <option value="stealth">Stealth</option>
+      <option value="rpg">RPG</option>
+      <option value="fps">First-Person-Shooter</option>
+    </select>
     <button id="btn">Test</button>
   </body>
 </html>
