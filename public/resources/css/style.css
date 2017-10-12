@@ -20,7 +20,7 @@ div {
   top: 2.5rem;
   display: block;
   margin: 0 auto;
-  padding: 10rem 5rem;
+  padding: 10rem 0 0 0;
   text-align: center;
   position: relative;
 }
@@ -40,6 +40,34 @@ li {
   letter-spacing: 4px;
   color: white;
   padding: 0 1.5rem;
+}
+
+.dropdown-container {
+  padding-bottom: 200px;
+}
+
+.games-container {
+  margin-top: 100px;
+  padding-top: 35px;
+  background: white;
+  display: none;
+  height: 40%;
+}
+
+.games-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 30rem;
+  width: 100%;
+  height: 110px;
+  background: white;
+  -webkit-transform: skewY(2.5deg);
+  -moz-transform: skewY(2.5deg);
+  -ms-transform: skewY(2.5deg);
+  -o-transform: skewY(2.5deg);
+  transform: skewY(2.5deg);
+  -webkit-backface-visibility: hidden;
 }
 
 .dropdown-btn {
@@ -85,7 +113,7 @@ li {
 	background-color: rgb(243, 182, 128);
 }
 
-.dropdown-content a {
+.dropdown-content option {
   color: #6b6594;
   padding: 1rem 0.5rem;
   text-decoration: none;
@@ -93,8 +121,9 @@ li {
   border-bottom: 1px solid #6b6594;
 }
 
-.dropdown-content a:hover {
+.dropdown-content option:hover {
   color: #f3b680;
+  cursor: pointer;
 }
 
 .dropdown-btn:hover .dropdown-content {
@@ -105,7 +134,52 @@ li {
   transition-delay: 0s, 0s, 500ms;
 }
 
-.dropdown-btn img:hover {
+.dropdown-btn img {
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 300ms, z-index 0s linear 0.01s;
+}
+
+.dropdown-btn:hover  img {
   transform: rotate(90deg);
   transition-duration: 300ms;
 }
+
+#game{
+  font-size: 1.2rem;
+  color: #6b6594;
+  line-height: 1.5;
+  padding-bottom: 1rem;
+
+}
+
+.games-container>p:nth-child(odd){
+    font-weight:bold;
+}​
+
+#tilted {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: white;
+  padding: 0;
+}
+
+#tilted::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  transform-origin: top left;
+  transform: skewY(20deg);
+  z-index: -1;
+}
+
+
+/*#tilted {
+  margin: 3em -1em -2em;
+  position: relative;
+  text-align: center;
+  background: #FFF;
+  height: 5em;
+  color: #FFF;
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.2);
+}*/

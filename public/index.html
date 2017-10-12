@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link href="./resources/css/style.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet">
+    <title>You're Next Game</title>
     <script
       src="https://code.jquery.com/jquery-2.2.4.min.js"
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -10,8 +12,8 @@
     </script>
     <script type="text/javascript">
       $(document).ready(function() {
-        $('#btn').click(function() {
-          var genre = $(".genre-dropdown option:selected").text();
+        $('option').click(function() {
+          var genre = $(".dropdown-content option:selected").text();
           $.ajax({
             url: "/api",
             data: {
@@ -19,23 +21,50 @@
             }
           }).done(function(data) {
             console.log(data);
+            $('.games-container').empty();
             for (var i = 0; i < data.length; i++) {
-              var p = $("<p>").text(data[i].name);
-              $("body").append(p);
+              var p = $("<p id='game'>").text(data[i].name); //# game
+              $(".games-container").append(p);
             }
+            $('.games-container').slideDown(500);
           });
         });
       });
     </script>
   </head>
   <body>
-    <select class="genre-dropdown">
-      <option value="action">Action</option>
-      <option value="adventure">Adventure</option>
-      <option value="stealth">Stealth</option>
-      <option value="rpg">RPG</option>
-      <option value="fps">First-Person-Shooter</option>
-    </select>
-    <button id="btn">Test</button>
+    <div id="logo">
+      <img src="./resources/images/yng.png">
+    </div>
+
+    <div class="container">
+      <div class="dropdown-container">
+        <ul>
+          <li class="text-1">I want to play a(n) </li>
+          <li class="dropdown">
+            <div class="dropdown-btn">
+              <img src=./resources/images/button.png>
+              <div class="dropdown-content">
+                <option value="adventure">Adventure</option>
+                <option value="fighting">Fighting</option>
+                <option value="role-playing">RPG</option>
+                <option value="shooter">First-Person-Shooter</option>
+                <option value="racing">Racing</option>
+                <option value="sport">Sport</option>
+                <option value="strategy">Strategy</option>
+                <option value="indie">Indie</option>
+              </div>
+            </div>
+          </li>
+          <li class="text-2">game.</li>
+        </ul>
+      </div>
+
+      <div class="games-container">
+        <div id="tilted">
+        </div>
+      </div>
+
+    </div>
   </body>
 </html>

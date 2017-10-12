@@ -14,11 +14,11 @@ app.get('/api', function(req, res) {
   console.log(req.query.genre);
   client.games( {
     genres:[req.query.genre],
-    filters: {
-      'release_dates.date-gt': '2010-12-31',
-      'release_dates.date-lt': '2017-10-01'
-    },
-    order: 'release_dates.date:desc',
+    // filters: {
+    //   'release_dates.date-gt': '2010-12-31',
+    //   'release_dates.date-lt': '2017-10-01'
+    // },
+    // order: 'release_dates.date:desc',
     limit: 50
   },[
     "name"
